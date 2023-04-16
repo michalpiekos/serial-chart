@@ -4,23 +4,22 @@ CONFIG = {
     'telnet_port' : 23,
     'serial_port' : '/dev/ttyACM0',
     'serial_baudrate' : 115200,
-    "separator" : " ",
-    "skip_first" : 5,
+    "separator" : " ", # Separator between variables in source data
+    "skip_first" : 5, # How many first lines to skip, e.g. to stabilize
     # Provide names for columns. Number of names must match number of columns in data
     # Currently all variables are treated as float. 
     "columns" : ['accX', 'accY', 'accZ', 'gyroX', 'gyroY', 'gyroZ', 'magX', 'magY', 'magZ'], 
     # Select index of the columns to plot. Plotting 3 columns is currently supported.
     # Each in in subsequent axis: X, Y, Z
-    "plot_columns" : [6, 7, 8], 
+    "plot_columns" : [6, 7, 8], # Which columns to plot
     "grid_spacing" : 200,
     "grid_size" : 2000,
     "grid_show" : False,
-    # Project data on xy, xz, yz planes additionaly to points in 3d space
-    "dot_plot" : True,
-    "plane_projection" : True,
+    "dot_plot" : True, # Show points in 3d space. Might be ommited if you are interested only in projections
+    "plane_projection" : True, # Project data on xy, xz, yz planes additionaly to points in 3d space
     "dot_size" : 20,
     "filename" : "data.csv",
-    'print_raw' : True
+    'print_raw' : True # Print raw data on output as it comes
 }
 
 

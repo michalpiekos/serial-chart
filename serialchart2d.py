@@ -4,16 +4,16 @@ CONFIG = {
     'telnet_port' : 23,
     'serial_port' : '/dev/ttyACM0',
     'serial_baudrate' : 115200,
-    "separator" : " ",
-    "skip_first" : 5,
-    "window" : 200,
+    "separator" : " ", # Separator between variables in source data
+    "skip_first" : 5, # How many first lines to skip, e.g. to stabilize
+    "window" : 200, # Size of window of data shown on chart
     # Provide names for columns. Number of names must match number of columns in data
     # Currently all variables are treated as float. 
     "columns" : ['accX', 'accY', 'accZ', 'gyroX', 'gyroY', 'gyroZ', 'magX', 'magY', 'magZ'], 
     # Select index of the columns to plot. If nested array then rows represent plots and columns lines.
     "plots" : [[0, 1, 2], [3, 4, 5], [6, 7, 8]], 
     "filename" : "data.csv",
-    'print_raw' : True
+    'print_raw' : True # Print raw data on output as it comes
 }
 
 
