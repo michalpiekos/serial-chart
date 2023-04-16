@@ -15,7 +15,12 @@ Installation Method
   `pip uninstall attr`<br>
   `pip install attrs`
 * Installation<br>
-Copy to your project. Run directly or instantiate a class.<br>
+Copy to your project. 
+
+Examples
+--------
+
+Run directly or instantiate a class.<br>
 ```
 v = SerialChart2D()
 v.animation()
