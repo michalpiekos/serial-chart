@@ -12,7 +12,7 @@ CONFIG = {
     "columns" : ['magX', 'magY', 'magZ', 'gyroX', 'gyroY', 'gyroZ', 'accX', 'accY', 'accZ'], 
     # Select index of the columns to plot. If nested array then rows represent plots and columns lines.
     "plots" : [[0, 1, 2], [3, 4, 5], [6, 7, 8]], 
-    "filename" : "data.csv",
+    "filename" : "IMU2d.csv",
     'print_raw' : True # Print raw data on output as it comes
 }
 
@@ -67,7 +67,7 @@ class SerialChart2D(object):
 
     def getaslist(self):
         if CONFIG['source'] == 'telnet':
-            tmp = self.com.read_until(b"\r\n", 5).decode("ascii").strip().split(CONFIG['separator'])
+            tmp = self.com.read_until(b"\n", 5).decode("ascii").strip().split(CONFIG['separator'])
             if CONFIG['print_raw']:
                 print(tmp)
             return tmp
@@ -115,4 +115,4 @@ if __name__ == '__main__':
     v = SerialChart2D()
     v.animation()
     v.close()
-    # v.saveData()
+    v.saveData()

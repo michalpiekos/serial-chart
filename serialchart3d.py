@@ -4,7 +4,8 @@ CONFIG = {
     'telnet_port' : 23,
     'serial_port' : '/dev/ttyACM0',
     'serial_baudrate' : 115200,
-    "separator" : " ", # Separator between variables in source data
+    "data_separator" : " ", # Separator between variables in source data
+    # "line_separator" : "\n", # Characters separating lines
     "skip_first" : 5, # How many first lines to skip, e.g. to stabilize
     # Provide names for columns. Number of names must match number of columns in data
     # Currently all variables are treated as float. 
@@ -17,7 +18,7 @@ CONFIG = {
     "dot_plot" : True, # Show points in 3d space. Might be ommited if you are interested only in projections
     "plane_projection" : True, # Project data on xy, xz, yz planes additionaly to points in 3d space
     "dot_size" : 20,
-    "filename" : "data.csv",
+    "filename" : "IMU.csv",
     'print_raw' : True # Print raw data on output as it comes
 }
 
@@ -102,7 +103,7 @@ class SerialChart3D(object):
             self.com = serial.Serial(CONFIG['serial_port'], baudrate=CONFIG['serial_baudrate'], timeout=1)
             self.com.flush()
         else:
-            print("Source data is not defined in 'config.py'")
+            print("Source data is not defined in `CONFIG['source']`")
         ### Skip first n datapoints
         for i in range(CONFIG['skip_first']):
             self.getaslist()
@@ -114,12 +115,12 @@ class SerialChart3D(object):
 
     def getaslist(self):
         if CONFIG['source'] == 'telnet':
-            tmp = self.com.read_until(b"\r\n", 5).decode("ascii").strip().split(CONFIG['separator'])
+            tmp = self.com.read_until(b"\n", 5).decode("ascii").strip().split(CONFIG['data_separator'])
             if CONFIG['print_raw']:
                 print(tmp)
             return tmp
         elif (CONFIG['source'] == 'serial'):
-            tmp = str(self.com.readline())[2:-5].split(CONFIG['separator'])
+            tmp = str(self.com.readline())[2:-5].split(CONFIG['data_separator'])
             if CONFIG['print_raw']:
                 print(tmp)
             return tmp
@@ -175,4 +176,4 @@ if __name__ == '__main__':
     v = SerialChart3D()
     v.animation()
     v.close()
-    # v.saveData()
+    v.saveData()

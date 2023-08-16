@@ -130,3 +130,6 @@ dmypy.json
 
 # IDE specific
 .vscode/
+
+# Project specific
+*.csv
