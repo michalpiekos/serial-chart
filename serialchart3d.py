@@ -15,6 +15,7 @@ CONFIG = {
     "grid_spacing" : 200,
     "grid_size" : 2000,
     "grid_show" : False,
+    "distance_multiplier" : 8, # camera distance multiplier; total distance = distance_multiplier * grid_size
     "dot_plot" : True, # Show points in 3d space. Might be ommited if you are interested only in projections
     "plane_projection" : True, # Project data on xy, xz, yz planes additionaly to points in 3d space
     "dot_size" : 20,
@@ -38,11 +39,11 @@ class SerialChart3D(object):
         # self.traces = dict()
         self.app = pg.mkQApp("Serial Chart")
         self.w = gl.GLViewWidget()
-        # self.w.opts['distance'] = 40
+        # self.w.opts['distance'] = 400
         self.w.setWindowTitle('Plotting {}'.format(CONFIG['source']))
         self.w.resize(1000,600)
         # self.w.setGeometry(0, 110, 1920, 1080)
-        self.w.setCameraPosition(distance=CONFIG['grid_size'] * 2)
+        self.w.setCameraPosition(distance=int(CONFIG['grid_size'] * CONFIG['distance_multiplier']))
         self.w.show()
 
         ### Create the background grids
