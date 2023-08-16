@@ -8,10 +8,9 @@ CONFIG = {
     "skip_first" : 5, # How many first lines to skip, e.g. to stabilize
     # Provide names for columns. Number of names must match number of columns in data
     # Currently all variables are treated as float. 
-    "columns" : ['accX', 'accY', 'accZ', 'gyroX', 'gyroY', 'gyroZ', 'magX', 'magY', 'magZ'], 
-    # Select index of the columns to plot. Plotting 3 columns is currently supported.
-    # Each in in subsequent axis: X, Y, Z
-    "plot_columns" : [6, 7, 8], # Which columns to plot
+    "columns" : ['magX', 'magY', 'magZ', 'gyroX', 'gyroY', 'gyroZ', 'accX', 'accY', 'accZ'], 
+    # Pick 3 columns to plot by index.
+    "plot_columns" : [0, 1, 2],
     "grid_spacing" : 200,
     "grid_size" : 2000,
     "grid_show" : False,

@@ -9,7 +9,7 @@ CONFIG = {
     "window" : 200, # Size of window of data shown on chart
     # Provide names for columns. Number of names must match number of columns in data
     # Currently all variables are treated as float. 
-    "columns" : ['accX', 'accY', 'accZ', 'gyroX', 'gyroY', 'gyroZ', 'magX', 'magY', 'magZ'], 
+    "columns" : ['magX', 'magY', 'magZ', 'gyroX', 'gyroY', 'gyroZ', 'accX', 'accY', 'accZ'], 
     # Select index of the columns to plot. If nested array then rows represent plots and columns lines.
     "plots" : [[0, 1, 2], [3, 4, 5], [6, 7, 8]], 
     "filename" : "data.csv",
